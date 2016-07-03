@@ -1,14 +1,32 @@
-group 'io.ignitr'
-version '1.0-SNAPSHOT'
+buildscript {
+    apply from: file('gradle/buildscript.gradle'), to: buildscript
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        mavenCentral()
+        maven { url "https://repo.spring.io/snapshot" }
+        maven { url "https://repo.spring.io/milestone" }
+    }
+}
+
+apply from: file('gradle/release.gradle')
+apply from: file('gradle/convention.gradle')
+apply from: file('gradle/codequality.gradle')
 
 apply plugin: 'java'
+apply plugin: 'io.spring.dependency-management'
 
-sourceCompatibility = 1.5
-
-repositories {
-    mavenCentral()
+dependencyManagement {
+    imports {
+        mavenBom 'org.springframework.cloud:spring-cloud-starter-parent:Brixton.RELEASE'
+    }
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.11'
+    compile('com.google.guava:guava:19.0')
+    compile('org.apache.commons:commons-lang3:3.4')
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.springframework.boot:spring-boot-actuator')
 }
