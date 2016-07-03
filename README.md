@@ -1,6 +1,8 @@
 ignition-springboot-common
 ===
 
+[![Build Status](https://travis-ci.org/ignitr-oss/ignition-springboot-common.svg?branch=master)](https://travis-ci.org/ignitr-oss/ignition-springboot-common)
+
 A library that contains common components used within Ignition SpringBoot applications.
 
 ##License
