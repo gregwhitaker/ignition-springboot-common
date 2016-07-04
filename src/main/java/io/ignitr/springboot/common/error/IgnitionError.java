@@ -99,7 +99,7 @@ public final class IgnitionError {
      *
      * @param fieldError field-level error message
      */
-    public synchronized void addFieldError(IgnitionFieldError fieldError) {
+    public void addFieldError(IgnitionFieldError fieldError) {
         if (fieldErrors == null) {
             fieldErrors = new ArrayList<>();
         }
@@ -113,7 +113,7 @@ public final class IgnitionError {
      * @param field field name
      * @param message error message
      */
-    public synchronized void addFieldError(final String field, final String message) {
+    public void addFieldError(final String field, final String message) {
         if (fieldErrors == null) {
             fieldErrors = new ArrayList<>();
         }
@@ -128,7 +128,7 @@ public final class IgnitionError {
      * @param code error code
      * @param message error message
      */
-    public synchronized void addFieldError(final String field, final String code, final String message) {
+    public void addFieldError(final String field, final String code, final String message) {
         if (fieldErrors == null) {
             fieldErrors = new ArrayList<>();
         }
@@ -219,9 +219,7 @@ public final class IgnitionError {
             "name",
             "version"
     })
-    private class Resource implements Serializable {
-        private static final long serialVersionUID = 6853164511036113109L;
-
+    private static class Resource {
         private String datacenter;
         private String environment;
         private String region;

@@ -62,12 +62,13 @@ public class DeploymentContext {
      *
      * <p>Valid values are:
      * <ul>
+     *  <li>Ignitr</li>
      *  <li>Amazon</li>
      *  <li>AmazonECS</li>
      *  <li>MyOwn</li>
      * </ul>
      *
-     * @return data center type
+     * @return datacenter type
      */
     public DataCenterType getDatacenterType() {
         if (StringUtils.isNotEmpty(datacenter)) {
@@ -75,9 +76,7 @@ public class DeploymentContext {
 
             if (type == null) {
                 StringBuilder message = new StringBuilder();
-                message.append("The datacenter type '");
-                message.append(type);
-                message.append("' specified by the 'deployment.datacenter' property is not supported. ");
+                message.append("The datacenter type specified by the 'deployment.datacenter' property is not supported. ");
                 message.append(" Supported types are: [");
 
                 boolean first = true;

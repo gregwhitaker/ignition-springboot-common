@@ -100,7 +100,7 @@ public class IgnitionErrorAdvice {
             throw new RuntimeException("Unhandled exception type encountered in httpMediaTypeExceptionHandler");
         }
 
-        errorAttrs.put("message", HttpStatus.valueOf(new Integer(errorAttrs.get("status").toString())).getReasonPhrase());
+        errorAttrs.put("message", HttpStatus.valueOf(Integer.parseInt(errorAttrs.get("status").toString())).getReasonPhrase());
         errorAttrs.put("details", e.getMessage());
 
         IgnitionError body = new IgnitionError(

@@ -21,6 +21,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.MDC;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.ErrorAttributes;
+import org.springframework.cloud.sleuth.Span;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
@@ -131,7 +132,7 @@ public class IgnitionErrorAttributes implements ErrorAttributes, HandlerExceptio
         Throwable error = getError(requestAttributes);
 
         if (error instanceof IgnitionException) {
-            // If the error is a blueprint compatible error we need to get the status code from the exception
+            // If the error is an ignition compatible error we need to get the status code from the exception
             status = ((IgnitionException) error).getHttpStatus().value();
         } else if (status == null && error instanceof MethodArgumentNotValidException) {
             // If a validation error occurs default to 400 - Bad Request
@@ -268,7 +269,7 @@ public class IgnitionErrorAttributes implements ErrorAttributes, HandlerExceptio
             }
         }
 
-        // Checking to see if the exception is a blueprint compatible exception and thus could
+        // Checking to see if the exception is an ignition compatible exception and thus could
         // potentially contain field-level errors
         if (error instanceof IgnitionException) {
             if (((IgnitionException) error).hasFieldErrors()) {
