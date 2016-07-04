@@ -1,3 +1,19 @@
+/*
+ * Copyright 2016 Greg Whitaker
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package io.ignitr.springboot.common.error;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -9,9 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Common error message format returned by all Blueprint services.
- *
- * @author Greg Whitaker
+ * Common error message format returned by all Ignition services.
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -37,7 +51,7 @@ public final class IgnitionError {
     private List<IgnitionFieldError> fieldErrors;
 
     /**
-     * Creates a new instance of a blueprint error message.
+     * Creates a new instance of an ignition error message.
      *
      * @param timestamp error timestamp
      * @param status http status
@@ -54,7 +68,7 @@ public final class IgnitionError {
     }
 
     /**
-     * Creates a new instance of a blueprint error message.
+     * Creates a new instance of an ignition error message.
      *
      * @param timestamp error timestamp
      * @param status http status
@@ -81,7 +95,7 @@ public final class IgnitionError {
     }
 
     /**
-     * Adds a field-level error message to this blueprint error message.
+     * Adds a field-level error message to this ignition error message.
      *
      * @param fieldError field-level error message
      */
@@ -94,7 +108,7 @@ public final class IgnitionError {
     }
 
     /**
-     * Adds a field-level error message to this blueprint error message.
+     * Adds a field-level error message to this ignition error message.
      *
      * @param field field name
      * @param message error message
@@ -108,7 +122,7 @@ public final class IgnitionError {
     }
 
     /**
-     * Adds a field-level error message to this blueprint error message.
+     * Adds a field-level error message to this ignition error message.
      *
      * @param field field name
      * @param code error code
