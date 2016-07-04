@@ -56,7 +56,7 @@ bintray {
         vcsUrl = 'https://github.com/ignitr-oss/ignition-springboot-common.git'
         licenses = ['Apache-2.0']
         githubRepo = 'ignitr-oss/ignition-springboot-common'
-        githubReleaseNotesFile = "CHANGELOG.md"
+        githubReleaseNotesFile = 'CHANGELOG.md'
 
         version {
             name = "${releaseVersion}"
