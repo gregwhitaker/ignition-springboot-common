@@ -16,5 +16,15 @@
 
 package io.ignitr.springboot.common.error;
 
-public class IgnitionErrorCode {
+/**
+ * Interface to be implemented by types that supply standard error codes for Ignition applications.
+ */
+public interface IgnitionErrorCode {
+
+    /**
+     * @return value of the error code
+     */
+    default String getValue() {
+        return "UNKNOWN";
+    }
 }

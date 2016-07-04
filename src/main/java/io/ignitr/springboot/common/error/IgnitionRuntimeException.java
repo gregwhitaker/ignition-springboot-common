@@ -16,5 +16,41 @@
 
 package io.ignitr.springboot.common.error;
 
-public class IgnitionRuntimeException extends RuntimeException {
+import org.springframework.http.HttpStatus;
+
+import java.util.List;
+
+public class IgnitionRuntimeException extends RuntimeException implements IgnitionException {
+    private HttpStatus httpStatus;
+    private IgnitionErrorCode errorCode;
+
+    @Override
+    public void addFieldError(String field, String message) {
+
+    }
+
+    @Override
+    public void addFieldError(String field, IgnitionErrorCode errorCode, String message) {
+
+    }
+
+    @Override
+    public boolean hasFieldErrors() {
+        return false;
+    }
+
+    @Override
+    public HttpStatus getHttpStatus() {
+        return null;
+    }
+
+    @Override
+    public IgnitionErrorCode getErrorCode() {
+        return null;
+    }
+
+    @Override
+    public List<IgnitionFieldError> getFieldErrors() {
+        return null;
+    }
 }
