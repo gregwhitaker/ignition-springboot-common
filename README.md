@@ -1,7 +1,7 @@
 ignition-springboot-common
 ===
 
-[![Build Status](https://travis-ci.org/ignitr-oss/ignition-springboot-common.svg?branch=master)](https://travis-ci.org/ignitr-oss/ignition-springboot-common)
+[![Build Status](https://travis-ci.org/ignitr-oss/ignition-springboot-common.svg?branch=master)](https://travis-ci.org/ignitr-oss/ignition-springboot-common) [ ![Download](https://api.bintray.com/packages/ignitr/ignitr-oss/ignition-springboot-common/images/download.svg) ](https://bintray.com/ignitr/ignitr-oss/ignition-springboot-common/_latestVersion)
 
 A library that contains common components used within Ignition SpringBoot applications.
 

@@ -1,5 +1,7 @@
 apply plugin: 'java'
 apply plugin: 'maven'
+apply plugin: 'maven-publish'
+apply plugin: 'com.jfrog.bintray'
 
 task versionArchives {
     description = "Creates a continuous-delivery friendly version number for the service"
@@ -27,4 +29,35 @@ build.dependsOn versionArchives
 jar {
     baseName = "${artifact}"
     version = "${releaseVersion}"
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+
+            artifact sourcesJar
+            artifact javadocJar
+        }
+    }
+}
+
+bintray {
+    user = project.hasProperty('bintrayUser') ? project.property('bintrayUser') : System.getenv('BINTRAY_USER')
+    key = project.hasProperty('bintrayApiKey') ? project.property('bintrayApiKey') : System.getenv('BINTRAY_API_KEY')
+    publications = ['maven']
+    pkg {
+        repo = 'ignitr-oss'
+        name = "${artifact}"
+        userOrg = 'ignitr'
+        desc = 'Library of common components used by Ignition SpringBoot projects'
+        websiteUrl = 'https://github.com/ignitr-oss/ignition-springboot-common'
+        issueTrackerUrl = 'https://github.com/ignitr-oss/ignition-springboot-common/issues'
+        vcsUrl = 'https://github.com/ignitr-oss/ignition-springboot-common.git'
+        licenses = ['Apache-2.0']
+
+        version {
+            name = '1.0.0'
+        }
+    }
 }
