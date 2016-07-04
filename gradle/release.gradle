@@ -57,7 +57,7 @@ bintray {
         licenses = ['Apache-2.0']
 
         version {
-            name = '1.0.0'
+            name = "${releaseVersion}"
         }
     }
 }
