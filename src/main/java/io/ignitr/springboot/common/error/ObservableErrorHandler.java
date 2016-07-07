@@ -13,6 +13,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
@@ -40,7 +42,20 @@ public class ObservableErrorHandler {
     }
 
     /**
-     * Transforms a {@link Throwable} for a Request into a {@link IgnitionError}.
+     * Transforms a {@link Throwable} for a request into an {@link IgnitionError}.
+     *
+     * This method requires that you lift a {@link io.ignitr.springboot.common.rx.RequestContextStashOperator} before use in
+     * order to get access to the originating request's attributes.  Failure to do so will result in an error.
+     *
+     * @param throwable the Observable onError throwable
+     * @return {@link ResponseEntity} of {@link IgnitionError}
+     */
+    public ResponseEntity<IgnitionError> handleError(Throwable throwable) {
+        return handleError(((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest(), throwable);
+    }
+
+    /**
+     * Transforms a {@link Throwable} for a request into a {@link IgnitionError}.
      *
      * @param request   http servlet request
      * @param throwable the Observable onError throwable
